@@ -1,8 +1,8 @@
 /* Web fonts, self-hosted through @fontsource (no third-party font host, ever).
-   The master template's pair: Roboto Slab 800 for headings, Roboto for body (wiki/framework/master-template.md).
-   When Gate 4 derives another pair from a design pointer, swap these imports and the packages in
-   package.json, and check the pair is openly licensed (SIL OFL or similar). */
-@import "@fontsource/roboto/latin-400.css";
-@import "@fontsource/roboto/latin-500.css";
-@import "@fontsource/roboto/latin-700.css";
-@import "@fontsource/roboto-slab/latin-800.css";
+   Funeral Director Awards brand (docs/brand.md): Montserrat 700/800 for headings, Source Sans 3 for body.
+   Both SIL OFL. */
+@import "@fontsource/montserrat/latin-700.css";
+@import "@fontsource/montserrat/latin-800.css";
+@import "@fontsource/source-sans-3/latin-400.css";
+@import "@fontsource/source-sans-3/latin-600.css";
+@import "@fontsource/source-sans-3/latin-700.css";
