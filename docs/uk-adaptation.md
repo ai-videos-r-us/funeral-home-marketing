@@ -47,7 +47,20 @@ Start from `scripts/examples/attributes-funeral-directors.json` (15 attributes) 
 - City copy: about the town in relation to funerals (local crematoria and cemeteries by name from council sources, travel distances, registration office), never a list of what the businesses say.
 - Spelling: British English throughout (organise, colour, centre).
 
-## Gate 6: launch
-- Deploy to Cloudflare Pages with Wrangler from Sean's machine (`npx wrangler login` in his own browser).
-- **Indexing: Google Search Console only**, with a verified property for funeraldirectorawards.com, the sitemap submitted, and important pages requested by hand. No paid indexing services (Omega or similar).
+## Gate 6: launch (Vercel)
+Sean hosts on **Vercel Pro**. The site folder `output/sw-funeral-directors/site/` already contains `vercel.json` (Astro preset, `dist` output, trailing slashes, `X-Robots-Tag: noindex` on any `*.vercel.app` host, long cache on `/_astro/`).
+
+**Recommended: Git integration** (every push to the production branch redeploys, which suits "edit the CSV, rebuild"):
+1. Commit the generated site (`output/sw-funeral-directors/site/`, excluding `node_modules` and `dist`, which are already gitignored) and push.
+2. Sean, in the Vercel dashboard: **Add New → Project**, import `ai-videos-r-us/funeral-home-marketing`, set **Root Directory** to `output/sw-funeral-directors/site`, and confirm the framework is Astro. Production branch: `main` (merge the working branch into `main` first) or set the working branch as production in Settings → Git.
+3. Deploy, then open the `*.vercel.app` address and check it.
+
+**Alternative: CLI from Sean's machine:** in the site folder, `npx vercel link` (once, Sean logs in in his browser), then `npx vercel --prod`.
+
+**Domain** (Sean, in Vercel): Project → Settings → Domains → add `funeraldirectorawards.com` and `www.funeraldirectorawards.com` (redirect www to the apex, or the other way round, but pick one and keep it). Vercel shows the DNS records to set at the domain registrar, or offers to switch the nameservers to Vercel. Add `funeraldirectorawards.co.uk` and `.uk` as redirects once registered. Make sure `site.json` `domain` matches the primary domain exactly.
+
+Then:
+- `python3 scripts/check_live.py https://funeraldirectorawards.com --preview https://<project>.vercel.app --expect-urls <n>` must pass.
+- **Indexing: Google Search Console only**, with a verified property for funeraldirectorawards.com (DNS TXT record at the registrar or in Vercel DNS), the sitemap submitted, and important pages requested by hand. No paid indexing services (Omega or similar).
 - The original launch-lean sitemap rules still apply (strong pages first, thin profiles `noindex`).
+- The Cloudflare mail worker in `templates/worker/` is **not used** on Vercel. Claims go to Formspree (`contact.formEndpoint`), and email uses Next Chapter Media's normal mailbox.

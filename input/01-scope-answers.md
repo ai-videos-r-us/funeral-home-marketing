@@ -16,3 +16,4 @@
 ## Decisions already made by Sean (2026-11-10)
 - **Gate 3 attributes:** the 15 in `scripts/examples/attributes-funeral-directors.json` are approved as they are.
 - **Gate 4 exclusions:** crematoria, cemeteries and stonemasons (monumental masons) are **not** listed. Exclude them by what they do, not by Google category alone: a row goes into `04-exclusions.csv` when `arranges_funerals` is `false`, or when its primary type is a crematorium, cemetery or monument maker **and** `arranges_funerals` is not `true`. Funeral directors that also run a crematorium or sell memorials stay in. Show Sean the excluded list and the borderline rows before applying it.
+- **Hosting:** Vercel Pro (Sean's existing account), not Cloudflare. Deploy steps: `docs/uk-adaptation.md` § Gate 6.

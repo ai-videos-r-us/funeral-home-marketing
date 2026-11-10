@@ -1,4 +1,4 @@
-> **This copy is adapted for Funeral Director Awards** (South West England funeral directors, Next Chapter Media). Read `CLAUDE.md`'s first section and `docs/` before anything below. Paid tiers, Stripe links and Omega indexing described in this file are **not** used.
+> **This copy is adapted for Funeral Director Awards** (South West England funeral directors, Next Chapter Media). Read `CLAUDE.md`'s first section and `docs/` before anything below. Paid tiers, Stripe links, Omega indexing and Cloudflare hosting described in this file are **not** used: hosting is Vercel (`docs/uk-adaptation.md` § Gate 6).
 
 ## Quick start for Sean (local machine)
 1. Clone the repo and check out the working branch. Install Node 20+ and Python 3.

@@ -5,7 +5,7 @@ Reads only. Run it against the real domain after the deploy, and against the pag
 address to confirm that address is kept out of search.
 
 Usage:
-  python3 scripts/check_live.py https://example.com [--pages-dev https://project.pages.dev] [--expect-urls 1076]
+  python3 scripts/check_live.py https://example.com [--preview https://<project>.vercel.app] [--expect-urls 1076]
 """
 import argparse, re, sys, urllib.request, urllib.error
 
@@ -24,7 +24,7 @@ def get(url):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("base"); ap.add_argument("--pages-dev", default=""); ap.add_argument("--expect-urls", type=int, default=0)
+    ap.add_argument("base"); ap.add_argument("--preview", "--pages-dev", dest="pages_dev", default="", help="the host's own address, e.g. https://<project>.vercel.app"); ap.add_argument("--expect-urls", type=int, default=0)
     a = ap.parse_args()
     base = a.base.rstrip("/"); ok = True
 
@@ -72,7 +72,7 @@ def main():
 
     if a.pages_dev:
         s, h, _, _ = get(a.pages_dev.rstrip("/") + "/")
-        line("noindex" in h.get("x-robots-tag", ""), f"the pages.dev address sends X-Robots-Tag: noindex (got '{h.get('x-robots-tag', 'nothing')}')")
+        line("noindex" in h.get("x-robots-tag", ""), f"the host's own address (vercel.app) sends X-Robots-Tag: noindex (got '{h.get('x-robots-tag', 'nothing')}')")
 
     print("\nAll checks passed." if ok else "\nSomething failed. Fix it before the dripfeed starts.")
     sys.exit(0 if ok else 1)
