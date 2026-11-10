@@ -18,8 +18,8 @@ The Blueprint builds for position 1 and ships the hooks for position 2. Nothing 
 
 | Source | What the build ships | The work |
 |---|---|---|
-| **Badges** | An HTML embed per premium and best-of listing (`templates/featured-tiers.md`), linking to the business's listing page | Send the snippet, not a JPEG: "send this to your developer or we'll do it for you." Offer to install it. Word it as accreditation: "Verified [niche] on [Brand]." |
-| **Press releases** | Best-of positions (`best_of_rank`) and a listing page per business | One release per best-of sale, about the business. Its three links: the business's home page, its listing page, and the city best-of page. The $100 floor on a best-of sale pays for the release (AB Newswire, about $10). |
+| **Badges** | An HTML embed for each real award winner or finalist (docs/awards-programme.md), linking to the winner's page | Send the snippet, not a JPEG: "send this to your developer or we'll do it for you." Offer to install it. Word it as accreditation: "Verified [niche] on [Brand]." |
+| **Press releases** | Award results and winner pages | One release per awards cycle, plus optional winner releases sold to every winner at one price after results are public. Never sold as a placement. |
 | **Resource pages** | Optional `/resources/[slug]/` pages ([[site-architecture]], [[page-types]]) | Write the most in-depth page on one topic in one place (hotlines, state rules, what realtors say, local stats). Then ask the Chamber of Commerce, city sites and associations to update their link to it. "You just need something different." Written with the seo-content-engine skill when DataForSEO is connected, by hand otherwise, and linted either way ([[copy-gate]]). |
 | **Local content plus creator outreach** | The city page's local copy block and the resource pages | Research the city on YouTube (realtor tours, neighborhood videos), write from the transcript like a local, then tell the creator: "we just published an article, would you like to comment?" |
 | **The national month** | Nothing to build | Every month is national something month. Pitch realtors a piece for their site on that hook and get the link back. Manual, one real email at a time. |
@@ -29,7 +29,7 @@ Plus one side effect: when the member does SEO for a client who is listed, the c
 ## Rules
 - Links go to listing pages, city pages and resource pages, not only the home page. A directory is many small entry points.
 - Outreach is one real email to one real person. No templated blasts; the directory is also the member's client-getter and its reputation is theirs.
-- No link schemes between the member's own microsites and the directory ([[footprint-rules]] still holds). Owned sites are listed like any other business and buy tiers at the public price if they want a followed link.
+- No link schemes between the member's own microsites and the directory ([[footprint-rules]] still holds). Clients and owned sites are listed like any other business; there are no paid tiers.
 - Track what was placed where in the repo (a `links.md` in `output/<slug>/`), so a rebuild never drops a page someone linked to. Never change a URL that has an inbound link.
 
 ## See also

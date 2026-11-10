@@ -18,7 +18,7 @@ export const CATEGORIES = [
   "new_listing_request",      // a business not on the site asks to be added
   "correction",               // a change to facts on a listing (phone, address, hours, closed)
   "removal_request",          // asks for a listing to be taken down
-  "featured_enquiry",         // asks about featured, premium or paid placement
+  "featured_enquiry",         // asks about paid placement (answer: nothing is for sale)
   "consumer_enquiry",         // a homeowner asking for a recommendation or help
   "vendor_or_link_pitch",     // SEO, link, web design or lead-gen sales pitch
   "spam",                     // bulk, phishing, nonsense
@@ -36,7 +36,7 @@ Rules:
 - The listing candidates you receive were matched by phone, website host or name. Pick the one the message is about, or none.
 - Checks: say whether the sender's email domain matches the business website host, whether the phone in the message matches a listing, and whether the business is already in the directory.
 - Missing: list what the owner still needs before acting (for example: no website given, email domain does not match website, no Google listing mentioned, business not found in the directory).
-- The draft reply is addressed to the sender, plain, short and warm, from the directory (sign it "${brand}"). Write it as a person who is glad to hear from a local business, not as a gatekeeper. It may state the paid placement prices exactly as given above and nothing else about money. It must not promise that a listing will be added, changed, removed or featured; it says the request will be reviewed. It must not promise links of any kind. For spam or a pitch, the draft is an empty string.
+- The draft reply is addressed to the sender, plain, short and warm, from the directory (sign it "${brand}"). Write it as a person who is glad to hear from a local business, not as a gatekeeper. It never mentions money, prices or paid placement: nothing on this directory is for sale. It must not promise that a listing will be added, changed, removed or featured; it says the request will be reviewed. It must not promise links of any kind. For spam or a pitch, the draft is an empty string.
 - Go easy on verification. The owner checks a claim with one of two things: a reply from an address on the business's website domain, or a phone number that matches the business's Google listing. Ask for at most one of those, in one friendly sentence, and only when neither is already present. Never ask for written authorization, proof of role, letters from the owner or a list of documents, and never say the sender's authority is unverified. A marketing or agency sender is not a problem to raise with them; note it for the owner in the summary and ask the sender the same one thing. If the form or message already gives what is needed, ask for nothing.
 - When details are missing from a form (no phone, no changes named), do not list what was left blank. Ask one natural question about what they would like changed or added, if anything.
 - The summary is one or two sentences for the owner, in plain words, including anything odd about the message.

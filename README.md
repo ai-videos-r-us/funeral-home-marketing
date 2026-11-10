@@ -1,3 +1,11 @@
+> **This copy is adapted for Funeral Director Awards** (South West England funeral directors, Next Chapter Media). Read `CLAUDE.md`'s first section and `docs/` before anything below. Paid tiers, Stripe links and Omega indexing described in this file are **not** used.
+
+## Quick start for Sean (local machine)
+1. Clone the repo and check out the working branch. Install Node 20+ and Python 3.
+2. In your own Terminal: `python3 scripts/connect_dataforseo.py` (saves the DataForSEO login; never paste it into chat).
+3. Add your profile photo as `templates/astro/public/images/publisher.jpg`.
+4. Run `claude` in the repo folder and type: `Read CLAUDE.md and run Gate 1.`
+
 # Directory Blueprint for Claude Code
 
 This folder turns a Google Maps export into a ranked, monetizable local directory: one niche, one state, built as a static Astro site and deployed to Cloudflare Pages. You point Claude Code at it and it builds to spec instead of guessing. It is the sibling of the Microsite Blueprint and works the same way.
@@ -57,11 +65,9 @@ It runs on your Claude subscription, so there is no API bill, but it counts agai
 The site builds without them, but it cannot launch without them:
 - the domain registered, and an address on it for the contact page and the claim form (a mailbox, or the mail worker after launch)
 - your bio approved, a photo, and links to your profiles
-- the Stripe Payment Links for the tiers you want to sell at launch
 
 ## After launch
-- A sold slot, a claimed listing, a corrected phone number: edit the CSV, `Run Gate 5`, redeploy. Never hand-edit generated pages.
-- Sell by hand: send the Stripe Payment Link, flip the column (`featured`, `premium`, `best_of_rank`, `claimed`), rebuild. Tiers and the badge snippet are in `templates/featured-tiers.md`.
+- A claimed listing or a corrected phone number: edit the CSV, `Run Gate 5`, redeploy. Never hand-edit generated pages.
 - How the directory earns links and clients after launch is in `wiki/framework/authority-and-links.md`.
 
 ## After launch, optional: a real hello@ inbox with Claude triage

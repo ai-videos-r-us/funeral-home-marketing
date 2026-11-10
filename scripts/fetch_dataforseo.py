@@ -158,7 +158,14 @@ def post(auth, task, retries=3, url=API):
 
 
 def base_task(a):
-    filters = [["address_info.region", "=", a.state]]
+    # UK adaptation: --region may be repeated (OR-ed) and --region-field/--region-op choose the field and
+    # operator, because a UK region such as "South West England" is not a value Google writes into
+    # address_info.region. Probe first (see docs/uk-adaptation.md), then narrow by postcode with
+    # scripts/uk_region_filter.py. With no --region the old behaviour holds: region = --state.
+    values = a.region or [a.state]
+    conds = [[a.region_field, a.region_op, v] for v in values]
+    region = conds[0] if len(conds) == 1 else [x for c in conds for x in ("or", c)][1:]
+    filters = [region]
     if a.min_reviews > 0:
         filters += ["and", ["rating.votes_count", ">=", a.min_reviews]]
     return {"categories": a.category, "filters": filters,
@@ -259,6 +266,10 @@ def main():
                     help="DataForSEO category id, repeatable (max 10), e.g. swimming_pool_contractor")
     ap.add_argument("--state", help='state name as Google writes it, e.g. "Florida"')
     ap.add_argument("--state-code", help="two-letter code written into state_code, e.g. FL")
+    ap.add_argument("--region", action="append", default=[],
+                    help='value(s) for the region filter, repeatable and OR-ed, e.g. --region England. Defaults to --state')
+    ap.add_argument("--region-field", default="address_info.region", help="DataForSEO field the region filter applies to")
+    ap.add_argument("--region-op", default="=", help='filter operator, e.g. "=" or "like" (with %% wildcards)')
     ap.add_argument("--out", default=os.path.join(ROOT, "input", "listings-raw.csv"))
     ap.add_argument("--estimate", action="store_true", help="three requests, about five cents: row count and projected cost, primary-category count, website share, and a VERTICAL FLAG when the vertical is clearly a bad fit; no pull")
     ap.add_argument("--max-rows", type=int, default=0, help="stop after this many rows (tests)")
@@ -353,7 +364,8 @@ def main():
         w = csv.DictWriter(f, fieldnames=COLUMNS); w.writeheader(); w.writerows(rows)
 
     with_email = sum(1 for r in rows if r["email_1"])
-    off_state = sum(1 for r in rows if r["state"].lower() != a.state.lower())
+    wanted = {v.lower() for v in (a.region or [a.state])}
+    off_state = sum(1 for r in rows if r["state"].lower() not in wanted) if a.region_op == "=" else 0
     primary = sum(1 for r in rows if r["type"].lower().replace(" ", "_") in [c.lower() for c in a.category])
     ages = [r["last_updated_time"][:10] for r in rows if r["last_updated_time"]]
     report = [

@@ -20,10 +20,10 @@ One member's rebuild rule, adopted as the house rule: generate everything, publi
 - The resources index, until a real resource page exists (the skeleton's `_example.md` is not one).
 
 ## Widening
-Every 30 days: read indexed count and clicks (indexing tool report + Cloudflare analytics, no GSC on a network directory per [[footprint-rules]]). If indexed pages are growing, flip the next tranche of thin pages to index (claimed ones first, then by review count), rebuild, resubmit.
+Every 30 days: read indexed count and clicks (Search Console and Cloudflare analytics). If indexed pages are growing, flip the next tranche of thin pages to index (claimed ones first, then by review count), rebuild, resubmit.
 
 ## Indexing
-Omega Indexer, dripfeed. Sitemap URL list is the input; a 1,000-page launch runs 7 to 10 days. Same lesson as the Microsite Playbook Step 6, but here the sitemap really exists and really matters.
+**Funeral Director Awards: Google Search Console only.** Submit the sitemap, request indexing for the home, region and largest town pages by hand, and widen tranches as indexed counts grow. No Omega or other paid indexing service.
 
 ## Found on the pilot (2026-09-29)
 - **The site must ship a `404.html`.** Cloudflare Pages treats a site without one as a single-page app and answers every unknown address with the home page and a 200. The skeleton now has `src/pages/404.astro`.

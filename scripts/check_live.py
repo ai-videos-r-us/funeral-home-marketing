@@ -63,9 +63,12 @@ def main():
         s, _, b, _ = get(local)
         line(s == 200 and 'content="noindex' not in b, f"a page from the sitemap answers 200 and is indexable: /{u.split('/', 3)[3]}")
 
-    for path in ("/claim/", "/featured/"):
-        s, _, b, _ = get(base + path)
-        line(s == 200 and 'content="noindex' in b, f"{path} is served and noindex")
+    s, _, b, _ = get(base + "/claim/")
+    line(s == 200 and 'content="noindex' in b, "/claim/ is served and noindex")
+    s, _, b, _ = get(base + "/methodology/")
+    line(s == 200 and 'content="noindex' not in b, "/methodology/ (How we score) is served and indexable")
+    s, _, _, _ = get(base + "/featured/")
+    line(s == 404, "/featured/ does not exist (no paid placement on this directory)")
 
     if a.pages_dev:
         s, h, _, _ = get(a.pages_dev.rstrip("/") + "/")

@@ -222,10 +222,10 @@ def fill_from_site(slug, cfg, review_to, forward_to, name):
     domain = site["domain"].strip().lower().removeprefix("https://").removeprefix("http://").strip("/")
     if domain in ("", "example.com"):
         sys.exit("site.json still has the placeholder domain; the worker needs the real one")
-    tiers = site.get("tiers", {})
-    tier_text = (f"Featured placement on the city page: {tiers.get('city', {}).get('price', '$29 a month')}. "
-                 f"Premium listing (verified badge, photos, fuller profile): {tiers.get('premium', {}).get('price', '$97 a year')}. "
-                 f"Best-of placement: {tiers.get('bestOf', {}).get('price', 'one time, price on request')}. The listing itself is free.")
+    # Funeral Director Awards: nothing is for sale (docs/editorial-policy.md). The triage prompt receives
+    # this sentence where the original blueprint passed tier prices.
+    tier_text = ("None. Nothing on this site is for sale: listing, claiming and entering the awards are free, "
+                 "and no business can pay for a position. Never quote a price or suggest paid placement.")
     niche = site["niche"]
     noise = set()
     for w in (niche.get("singular", "") + " " + niche.get("plural", "") + " " + niche.get("title", "") + " " + site["state"]["name"]).lower().split():
