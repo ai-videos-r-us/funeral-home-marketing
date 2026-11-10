@@ -94,7 +94,7 @@ def main():
                  "or the Setup lesson in the classroom), open a new Terminal window, then run this again.")
 
     print("DataForSEO API login. Both values are on app.dataforseo.com/api-access.")
-    login = strip_quotes(ask("API login (your DataForSEO email): "))
+    login = strip_quotes(ask("API login (the value in the API login box on app.dataforseo.com/api-access, NOT the password or Base64 line): "))
     password = strip_quotes(ask("API password (hidden while you type or paste, then Return): ", hidden=True))
     if not login or not password:
         sys.exit("Both values are needed. Nothing was saved.")
