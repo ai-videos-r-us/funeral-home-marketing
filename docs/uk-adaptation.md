@@ -50,6 +50,8 @@ Start from `scripts/examples/attributes-funeral-directors.json` (15 attributes) 
 ## Gate 6: launch (Vercel)
 Sean hosts on **Vercel Pro**. The site folder `output/sw-funeral-directors/site/` already contains `vercel.json` (Astro preset, `dist` output, trailing slashes, `X-Robots-Tag: noindex` on any `*.vercel.app` host, long cache on `/_astro/`).
 
+**If the holding page is already live** (`holding/`, connected early so the domain and HTTPS were ready): use that same Vercel project. In Settings → Build and Deployment, change Root Directory from `holding` to `output/sw-funeral-directors/site` and Framework Preset to Astro, then redeploy. The domain stays attached. Delete `holding/` afterwards.
+
 **Recommended: Git integration** (every push to the production branch redeploys, which suits "edit the CSV, rebuild"):
 1. Commit the generated site (`output/sw-funeral-directors/site/`, excluding `node_modules` and `dist`, which are already gitignored) and push.
 2. Sean, in the Vercel dashboard: **Add New → Project**, import `ai-videos-r-us/funeral-home-marketing`, set **Root Directory** to `output/sw-funeral-directors/site`, and confirm the framework is Astro. Production branch: `main` (merge the working branch into `main` first) or set the working branch as production in Settings → Git.
