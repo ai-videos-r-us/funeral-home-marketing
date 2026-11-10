@@ -1,0 +1,12 @@
+[
+  { "key": "inground", "label": "Inground pools", "faq": "Which {plural} in {city} build inground pools?" },
+  { "key": "fiberglass", "label": "Fiberglass", "faq": "Who installs fiberglass pools in {city}?", "service": { "slug": "fiberglass-pools", "title": "Fiberglass Pool Builders", "intro": [] } },
+  { "key": "gunite_concrete", "label": "Gunite or concrete", "faq": "Which {plural} in {city} build gunite or concrete pools?" },
+  { "key": "spa_hot_tub", "label": "Spa or hot tub", "faq": "Which {plural} in {city} add a spa or hot tub?" },
+  { "key": "pool_remodel", "label": "Remodels", "faq": "Who remodels existing pools in {city}?" },
+  { "key": "screen_enclosure", "label": "Screen enclosures", "faq": "Which {plural} in {city} build screen enclosures?" },
+  { "key": "financing_offered", "label": "Financing", "faq": "Which {plural} in {city} offer financing?" },
+  { "key": "licensed_cpc", "label": "Licensed (CPC)", "faq": "Which {plural} in {city} mention a Florida CPC license?" },
+  { "key": "warranty_mentioned", "label": "Warranty", "faq": "Which {plural} in {city} mention a warranty?" },
+  { "key": "commercial", "label": "Commercial work", "faq": "Which {plural} in {city} take commercial projects?" }
+]

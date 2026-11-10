@@ -1,0 +1,7 @@
+{
+  "_readme": "One entry per city_slug. intro: array of paragraphs (500 to 800 words total, real local copy from the data, no swapped-city boilerplate). faqs: 4 to 6 {q, a} written from the attribute data. Cities without an entry fall back to a short data-driven intro and attribute FAQs, and the build prints a warning for each so Gate 5 knows what is left to write.",
+  "_example-city": {
+    "intro": ["Paragraph one.", "Paragraph two."],
+    "faqs": [{ "q": "Question?", "a": "Answer from the data." }]
+  }
+}

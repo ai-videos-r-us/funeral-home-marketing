@@ -1,0 +1,107 @@
+{
+  "brand": "Florida Pool Builders",
+  "domain": "example.com",
+  "tagline": "Every licensed custom pool builder in Florida, in one place.",
+  "niche": {
+    "singular": "pool builder",
+    "plural": "pool builders",
+    "title": "Pool Builders",
+    "mapsCategory": "swimming pool contractor",
+    "schemaType": "LocalBusiness"
+  },
+  "state": {
+    "name": "Florida",
+    "code": "FL"
+  },
+  "launchDate": "2026-10-01",
+  "publisher": {
+    "name": "Your Name",
+    "url": "https://yourname.com",
+    "email": "hello@example.com",
+    "phone": "",
+    "image": "/images/publisher.jpg",
+    "bio": "Sixty to one hundred twenty words about who you are, why you built this directory, and how listings are vetted. Written at Gate 5 from 01-scope.md.",
+    "sameAs": [
+      "https://www.linkedin.com/in/yourname",
+      "https://www.youtube.com/@yourname"
+    ],
+    "videoEmbed": ""
+  },
+  "contact": {
+    "email": "hello@example.com",
+    "formEndpoint": "https://formspree.io/f/your-form-id"
+  },
+  "tiers": {
+    "premium": {
+      "price": "$97 a year",
+      "link": "https://buy.stripe.com/REPLACE_PREMIUM"
+    },
+    "bestOf": {
+      "price": "from $100, one time",
+      "link": "https://buy.stripe.com/REPLACE_BESTOF"
+    },
+    "city": {
+      "price": "$29 a month",
+      "link": "https://buy.stripe.com/REPLACE_CITY"
+    },
+    "county": {
+      "price": "$99 a month",
+      "link": ""
+    },
+    "state": {
+      "price": "$499 a month",
+      "link": ""
+    }
+  },
+  "design": {
+    "inspiredBy": "URL(s) of the design pointer(s) from 01-scope.md. The tokens below are the master template's look (wiki/framework/master-template.md, locked 2026-09-30): navy, amber action, Roboto Slab and Roboto. Gate 4 keeps them or re-derives colors and type from the pointers, within the contrast rule, and records every change in 04-plan.md",
+    "bg": "#FFFFFF",
+    "surface": "#F5F6F8",
+    "text": "#325C68",
+    "heading": "#0B2545",
+    "headingWeight": 800,
+    "muted": "#4F6B74",
+    "accent": "#024B6D",
+    "accentText": "#FFFFFF",
+    "link": "#126665",
+    "action": "#F5A623",
+    "actionText": "#0B2545",
+    "band": "#0B2545",
+    "bandText": "#FFFFFF",
+    "headingFont": "\"Roboto Slab\", Georgia, serif",
+    "bodyFont": "\"Roboto\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "radius": "8px",
+    "buttonRadius": "8px",
+    "shadow": "0 2px 5px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.08)",
+    "logoText": "Florida Pool Builders",
+    "headerBg": "#0B2545",
+    "headerText": "#FFFFFF",
+    "bandSoft": "#C9D6E3",
+    "tint": "#E6F2F4",
+    "accent2": "#8FD8DC",
+    "bandOverlay": "rgba(11,37,69,0.78)",
+    "gold": "#F5B940"
+  },
+  "cityFloor": 3,
+  "maxCardsPerCity": 60,
+  "faq": [
+    {
+      "q": "How are pool builders listed here?",
+      "a": "Every listing comes from public business records and Google Maps. We keep businesses that are open, have reviews, and do this work as their main trade. Owners can claim a listing to correct details or add photos."
+    },
+    {
+      "q": "Do you charge businesses to be listed?",
+      "a": "No. A basic listing is free and stays free. Businesses can pay for a featured position or a premium listing, and those are marked as such."
+    }
+  ],
+  "sortAttribute": "",
+  "foldMaxKm": 40,
+  "cityFilter": false,
+  "vetting": [],
+  "stateIntro": [],
+  "heroPoints": [],
+  "footerAbout": "",
+  "disclaimer": "",
+  "featuredPreview": false,
+  "confirmedLabel": ""
+}
