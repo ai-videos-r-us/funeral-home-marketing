@@ -12,7 +12,9 @@ const description = `${site.brand} is published by ${p.name}. Why it exists, how
 const schema = [
   { '@context': 'https://schema.org', '@type': 'AboutPage', '@id': base + '/about/', url: base + '/about/', name: title, datePublished: site.launchDate, dateModified: buildDate, mainEntity: { '@id': `${base}/#person` } },
   { '@context': 'https://schema.org', '@type': 'Person', '@id': `${base}/#person`, name: p.name, url: p.url || undefined, email: p.email || undefined,
-    image: p.image ? base + p.image : undefined, description: p.bio, sameAs: (p.sameAs || []).filter(Boolean), owns: { '@type': 'Organization', '@id': `${base}/#publisher`, name: site.brand, url: base + '/' } },
+    image: p.image ? base + p.image : undefined, description: p.bio, sameAs: (p.sameAs || []).filter(Boolean),
+    worksFor: site.organization ? { '@type': 'Organization', '@id': `${base}/#organization`, name: site.organization.name, legalName: site.organization.legalName || undefined, url: site.organization.url || undefined, logo: site.organization.logo ? base + site.organization.logo : undefined } : undefined },
+  ...(site.organization ? [{ '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${base}/#website`, name: site.brand, url: base + '/', publisher: { '@id': `${base}/#organization` }, editor: { '@id': `${base}/#person` } }] : []),
 ];
 ---
 <Base title={title} description={description} path="/about/" schema={schema}>
@@ -35,8 +37,15 @@ const schema = [
     {vetting
       ? <div set:html={paragraphs(vetting.slice(0, 2))}></div>
       : <p>Every listing starts from public business records and Google Maps. We keep businesses that are open, have reviews, and do this work as their main trade. We merge duplicates and drop closed businesses.</p>}
-    <p>Right now that is {listings.length.toLocaleString('en-US')} {site.niche.plural} in {cities.length} {site.state.name} cities, last refreshed {buildDate}.</p>
-    <p>Owners can claim their listing for free. Every claim is checked by a person: a real local business, a matching email domain or a call to the number on the Google listing. Paid placements are marked as featured, premium or best-of wherever they appear.</p>
+    <p>Right now that is {listings.length.toLocaleString('en-GB')} {site.niche.plural} in {cities.length} {site.state.name} cities, last refreshed {buildDate}.</p>
+    <p>Owners can claim their listing for free. Every claim is checked by a person: a real local business, a matching email domain or a call to the number on the Google listing. Nothing on this site is paid placement: listing, claiming and entering the awards are free, and no business can pay to change its position or its chances of winning.</p>
+    {site.organization && <>
+      <h2>Who owns this site</h2>
+      <div class="publisher">
+        {site.organization.logo && <img src={site.organization.logo} alt={site.organization.name} width="96" height="96" />}
+        <div><p>{site.disclosure}</p><p><a href="/methodology/">How we score</a></p></div>
+      </div>
+    </>}
     <h2>Corrections and removals</h2>
     <p>If a listing is wrong, or you want your business removed, <a href="/contact/">tell us</a>. We answer within a week and rebuild the directory with the change.</p>
   </section>

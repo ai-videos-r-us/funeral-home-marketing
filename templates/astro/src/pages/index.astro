@@ -23,8 +23,6 @@ const total = listings.length;
 const title = `${site.niche.title} in ${site.state.name} | ${site.brand}`;
 const description = `${total} ${site.niche.plural} across ${cities.length} ${site.state.name} cities, with ratings, services and phone numbers. Compare, then call.`;
 const schema = [
-  homeFeatured.some((l) => l.featured) ? { '@context': 'https://schema.org', '@type': 'ItemList', name: `Featured ${site.niche.plural} in ${site.state.name}`,
-    itemListElement: homeFeatured.filter((l) => l.featured).map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: base + l.path, name: l.name })) } : null,
   { '@context': 'https://schema.org', '@type': 'WebPage', '@id': base + '/', url: base + '/', name: title, datePublished: site.launchDate, dateModified: buildDate },
 ];
 ---

@@ -5,7 +5,7 @@ const href = listing ? `/claim/?listing=${encodeURIComponent(listing.slug)}&busi
 <aside class="cta-band">
   <div>
     <h2>{listing ? 'Is this your business?' : `Own a ${site.niche.singular} business in ${site.state.name}?`}</h2>
-    <p>{listing ? 'Claim the listing to correct details, add photos and hear about featured placement in your city.' : 'Claim your free listing, or get featured at the top of your city page.'}</p>
+    <p>{listing ? 'Claiming is free. Correct your details, add photos and your opening hours.' : 'Claim your free listing to correct details, add photos and opening hours.'}</p>
   </div>
-  <div><a class="btn" href={href}>{listing ? 'Claim this listing' : 'Claim your listing'}</a> &nbsp; <a href="/featured/" style="color:inherit">Get featured</a></div>
+  <div><a class="btn" href={href}>{listing ? 'Claim this listing' : 'Claim your listing'}</a></div>
 </aside>

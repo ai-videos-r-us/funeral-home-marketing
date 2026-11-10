@@ -1,60 +1,36 @@
 {
-  "brand": "Florida Pool Builders",
-  "domain": "example.com",
-  "tagline": "Every licensed custom pool builder in Florida, in one place.",
+  "brand": "Funeral Director Awards",
+  "domain": "funeraldirectorawards.com",
+  "tagline": "Every funeral director in South West England, with sourced details and independent annual awards.",
   "niche": {
-    "singular": "pool builder",
-    "plural": "pool builders",
-    "title": "Pool Builders",
-    "mapsCategory": "swimming pool contractor",
+    "singular": "funeral director",
+    "plural": "funeral directors",
+    "title": "Funeral Directors",
+    "mapsCategory": "funeral home",
     "schemaType": "LocalBusiness"
   },
   "state": {
-    "name": "Florida",
-    "code": "FL"
+    "name": "South West England",
+    "code": "SW",
+    "slug": "south-west-england"
   },
   "launchDate": "2026-10-01",
   "publisher": {
-    "name": "Your Name",
-    "url": "https://yourname.com",
-    "email": "hello@example.com",
+    "name": "Sean Munn",
+    "url": "",
+    "email": "",
     "phone": "",
     "image": "/images/publisher.jpg",
-    "bio": "Sixty to one hundred twenty words about who you are, why you built this directory, and how listings are vetted. Written at Gate 5 from 01-scope.md.",
-    "sameAs": [
-      "https://www.linkedin.com/in/yourname",
-      "https://www.youtube.com/@yourname"
-    ],
+    "bio": "Sean Munn is the editor of Funeral Director Awards. He runs Next Chapter Media, a UK marketing agency that helps independent funeral directors get found by the families searching for them. He started this directory to give families clear, sourced information about every funeral director in South West England, and to recognise the firms doing the job well. Every listing is built from public data and each firm's own website, and every correction is checked by hand.",
+    "sameAs": [],
     "videoEmbed": ""
   },
   "contact": {
-    "email": "hello@example.com",
-    "formEndpoint": "https://formspree.io/f/your-form-id"
-  },
-  "tiers": {
-    "premium": {
-      "price": "$97 a year",
-      "link": "https://buy.stripe.com/REPLACE_PREMIUM"
-    },
-    "bestOf": {
-      "price": "from $100, one time",
-      "link": "https://buy.stripe.com/REPLACE_BESTOF"
-    },
-    "city": {
-      "price": "$29 a month",
-      "link": "https://buy.stripe.com/REPLACE_CITY"
-    },
-    "county": {
-      "price": "$99 a month",
-      "link": ""
-    },
-    "state": {
-      "price": "$499 a month",
-      "link": ""
-    }
+    "email": "",
+    "formEndpoint": ""
   },
   "design": {
-    "inspiredBy": "URL(s) of the design pointer(s) from 01-scope.md. The tokens below are the master template's look (wiki/framework/master-template.md, locked 2026-09-30): navy, amber action, Roboto Slab and Roboto. Gate 4 keeps them or re-derives colors and type from the pointers, within the contrast rule, and records every change in 04-plan.md",
+    "inspiredBy": "Set at Gate 1/4. Default: the master template look until a design pointer is chosen.",
     "bg": "#FFFFFF",
     "surface": "#F5F6F8",
     "text": "#325C68",
@@ -73,7 +49,7 @@
     "radius": "8px",
     "buttonRadius": "8px",
     "shadow": "0 2px 5px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.08)",
-    "logoText": "Florida Pool Builders",
+    "logoText": "Funeral Director Awards",
     "headerBg": "#0B2545",
     "headerText": "#FFFFFF",
     "bandSoft": "#C9D6E3",
@@ -86,12 +62,16 @@
   "maxCardsPerCity": 60,
   "faq": [
     {
-      "q": "How are pool builders listed here?",
-      "a": "Every listing comes from public business records and Google Maps. We keep businesses that are open, have reviews, and do this work as their main trade. Owners can claim a listing to correct details or add photos."
+      "q": "How are funeral directors listed here?",
+      "a": "Every listing starts from Google Maps data for funeral directors in South West England. We keep firms that are open and have reviews, merge duplicates, and read each firm's own website for its details. Owners can claim a listing for free to correct it or add photos."
     },
     {
-      "q": "Do you charge businesses to be listed?",
-      "a": "No. A basic listing is free and stays free. Businesses can pay for a featured position or a premium listing, and those are marked as such."
+      "q": "Do funeral directors pay to be listed or to rank higher?",
+      "a": "No. Listing is free, claiming is free and entering the awards is free. Nothing on this site is for sale, and the order on every page follows the published method on our How we score page."
+    },
+    {
+      "q": "Who runs Funeral Director Awards?",
+      "a": "It is published by Next Chapter Media, a trading name of AI Video Systems, a marketing agency that works with funeral directors. Some listed firms are its clients; they are scored and judged exactly like everyone else."
     }
   ],
   "sortAttribute": "",
@@ -102,6 +82,14 @@
   "heroPoints": [],
   "footerAbout": "",
   "disclaimer": "",
-  "featuredPreview": false,
-  "confirmedLabel": ""
+  "confirmedLabel": "",
+  "country": "GB",
+  "outboundFollow": true,
+  "organization": {
+    "name": "Next Chapter Media",
+    "legalName": "AI Video Systems",
+    "url": "",
+    "logo": "/images/next-chapter-media-logo.png"
+  },
+  "disclosure": "Funeral Director Awards is published by Next Chapter Media, a trading name of AI Video Systems. Next Chapter Media is a marketing agency that works with funeral directors, and some of the firms listed here are its clients. Listing, claiming and entering the awards are free. Clients are ordered and judged by exactly the same published method as every other firm, our independent judges are never told who is a client, and no business can pay to change its position or its chances of winning."
 }

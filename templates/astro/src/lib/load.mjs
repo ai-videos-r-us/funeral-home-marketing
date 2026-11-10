@@ -110,15 +110,18 @@ export function loadDirectory() {
     if (seen.has(slug)) slug = `${slug}-${r.postal_code || seen.size}`;
     seen.add(slug);
     const attrs = attributes.map((a) => ({ key: a.key, label: a.label, value: normalizeAttr(r[a.key]) }));
-    const featured = (r.featured || '').toLowerCase().trim(); // '', city, county, state
-    const premium = truthy(r.premium);
+    // Funeral Director Awards: no paid placement of any kind. The featured, premium and best_of_rank
+    // columns are ignored even if present, so no CSV edit can buy a position (docs/editorial-policy.md).
+    const featured = '';
+    const premium = false;
     const claimed = truthy(r.claimed);
-    const bestOfRank = int(r.best_of_rank) || 0;
+    const bestOfRank = 0;
     const reviews = int(r.reviews);
     const rating = num(r.rating);
     const description = r.description_enriched || r.description || '';
     const thin = r.thin ? truthy(r.thin) : reviews < 5 || !description;
-    const optimized = Boolean(featured) || (claimed && premium);
+    // A free, verified claim unlocks owner photos, hours and the map for any business. Nothing is sold.
+    const optimized = claimed;
     const photos = optimized && r.photos ? r.photos.split(/[|,]/).map((s) => s.trim()).filter(Boolean) : [];
     const hours = parseHours(r.working_hours);
     return {
@@ -213,26 +216,12 @@ export function loadDirectory() {
     console.warn(`[directory] ${missingCopy.length} city page(s) have no entry in city-copy.json and fall back to data-driven copy: ${missingCopy.join(', ')}`);
   }
 
-  const stateFeatured = listings.filter((l) => l.featured === 'state');
-  let homeFeatured = [...stateFeatured, ...listings.filter((l) => l.featured === 'county'), ...listings.filter((l) => l.featured === 'city')]
-    .filter((l, i, arr) => arr.indexOf(l) === i).slice(0, 6);
-  // Design preview (site.featuredPreview): unsold positions show the best real listings, flagged `preview` so the
-  // cards carry data-preview and scripts/check_live.py refuses a live site that still shows them. Off at launch.
-  if (site.featuredPreview) {
-    const best = (list) => [...list].filter((l) => !l.featured && !l.thin && l.reviews >= 25 && l.rating >= 4.5 && (!sortAttr || attrValue(l, sortAttr) === 'true'))
-      .sort((a, b) => b.score - a.score);
-    // Two of the three positions, so the open-position card stays visible.
-    const fill = (have, list) => [...have, ...best(list).filter((l) => !have.includes(l)).slice(0, Math.max(0, 2 - have.length))];
-    homeFeatured = fill(homeFeatured, listings);
-    homeFeatured.forEach((l) => { if (!l.featured) l.preview = true; });
-    for (const c of cities) { c.featured = fill(c.featured, c.listings); c.featured.forEach((l) => { if (!l.featured) l.preview = true; }); }
-  }
-
+  // No featured placements exist on this directory; kept as an empty list so components stay simple.
+  const homeFeatured = [];
   // Launch lean: what stays out of the sitemap and gets noindex
   const noindexPaths = new Set();
   for (const l of listings) if (l.thin && !l.claimed && !l.optimized) noindexPaths.add(l.path);
-  for (const l of listings) if (l.premium || l.bestOfRank) noindexPaths.add(`/badge/${l.slug}/`);
-  for (const p of ['/claim/', '/featured/', '/privacy/', '/terms/', '/contact/', '/search/', '/directory/']) noindexPaths.add(p);
+  for (const p of ['/claim/', '/privacy/', '/terms/', '/contact/', '/search/', '/directory/']) noindexPaths.add(p);
 
   const stats = {
     listings: listings.length, cities: indexCities.length,
@@ -256,17 +245,14 @@ function normalizeAttr(v) {
   return 'not enough info';
 }
 export function attrValue(l, key) { return (l.attrs.find((a) => a.key === key) || {}).value || 'not enough info'; }
-export function isFeaturedIn(l, citySlug) {
-  if (l.featured === 'state') return true;
-  if (l.featured === 'county') return l.featuredCities.includes(citySlug) || l.citySlug === citySlug;
-  if (l.featured === 'city') return l.citySlug === citySlug;
-  return false;
-}
-// City page order: featured first, then paid best-of positions, then listings where
-// site.sortAttribute is true (when set), then everyone else. Within a group: rating x log(reviews).
+// No paid placement exists, so nothing is ever featured. Kept so older components still compile.
+export function isFeaturedIn() { return false; }
+// City page order (published on /methodology/): listings where site.sortAttribute is true first (when set),
+// then everyone else. Within a group: rating x log10(reviews + 1), then name. Payment, client status and
+// claim status never enter the order.
 export function sortListings(list, citySlug, sortAttr = '') {
-  const rank = (l) => (isFeaturedIn(l, citySlug) ? 0 : l.bestOfRank ? 1 : sortAttr && attrValue(l, sortAttr) === 'true' ? 2 : 3);
-  return [...list].sort((a, b) => rank(a) - rank(b) || (a.bestOfRank || 99) - (b.bestOfRank || 99) || b.score - a.score || a.name.localeCompare(b.name));
+  const rank = (l) => (sortAttr && attrValue(l, sortAttr) === 'true' ? 0 : 1);
+  return [...list].sort((a, b) => rank(a) - rank(b) || b.score - a.score || a.name.localeCompare(b.name));
 }
 export function fillFaq(template, site, cityName) {
   return template.replace(/\{plural\}/g, site.niche.plural).replace(/\{singular\}/g, site.niche.singular).replace(/\{city\}/g, cityName).replace(/\{state\}/g, site.state.name);

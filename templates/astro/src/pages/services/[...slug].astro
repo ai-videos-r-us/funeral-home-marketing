@@ -25,14 +25,14 @@ const description = s
   : `${site.niche.title} in ${site.state.name} grouped by the services they confirm: ${services.slice(0, 4).map((x) => x.label.toLowerCase()).join(', ')} and more.`;
 const cards = s ? s.listings.slice(0, site.maxCardsPerCity || 60) : [];
 const intro = s && s.intro.length ? s.intro : s ? [
-  `${s.count} of the ${listings.length.toLocaleString('en-US')} ${site.niche.plural} listed in ${site.state.name} are confirmed for ${s.label.toLowerCase()}, across ${s.cities.length} ${s.cities.length === 1 ? 'city' : 'cities'}. They are ranked below by Google rating weighted by review count. Confirm the details with the business before you sign anything.`,
+  `${s.count} of the ${listings.length.toLocaleString('en-GB')} ${site.niche.plural} listed in ${site.state.name} are confirmed for ${s.label.toLowerCase()}, across ${s.cities.length} ${s.cities.length === 1 ? 'city' : 'cities'}. They are ranked below by Google rating weighted by review count. Confirm the details with the business before you sign anything.`,
 ] : [];
 const schema = s ? [
   { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': base + path, url: base + path, name: title, datePublished: site.launchDate, dateModified: buildDate },
   { '@context': 'https://schema.org', '@type': 'ItemList', name: `${s.title} in ${site.state.name}`, numberOfItems: s.count,
     itemListElement: cards.map((l, i) => ({ '@type': 'ListItem', position: i + 1, item: {
       '@type': businessType(site), '@id': `${base}${l.path}#business`, name: l.name, url: base + l.path, telephone: e164(l.phone),
-      address: { '@type': 'PostalAddress', addressLocality: l.city, addressRegion: l.stateCode, postalCode: l.postalCode || undefined, addressCountry: 'US' },
+      address: { '@type': 'PostalAddress', addressLocality: l.city, addressRegion: l.stateCode, postalCode: l.postalCode || undefined, addressCountry: site.country || 'GB' },
     } })) },
 ] : [
   { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': base + path, url: base + path, name: title, datePublished: site.launchDate, dateModified: buildDate },

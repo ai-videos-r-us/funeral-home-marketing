@@ -4,7 +4,7 @@ import Rating from './Rating.astro';
 import { topAttrs, formatPhone, telHref, isFeaturedIn } from '../lib/load.mjs';
 const { l, citySlug } = Astro.props;
 const featured = isFeaturedIn(l, citySlug || l.citySlug);
-const mark = featured ? 'Featured' : l.bestOfRank ? `Best of ${l.city} #${l.bestOfRank}` : l.premium ? 'Premium listing' : '';
+const mark = l.claimed ? 'Claimed by owner' : '';
 const chips = topAttrs(l);
 ---
 <article class="card">

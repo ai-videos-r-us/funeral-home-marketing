@@ -1,0 +1,31 @@
+---
+// How we score: the published listing order and the awards' independence rules (docs/editorial-policy.md).
+// Every sentence here must describe what src/lib/load.mjs actually does. Change the code, change this page.
+import Base from '../layouts/Base.astro';
+import { loadDirectory } from '../lib/load.mjs';
+const { site, attributes, buildDate } = loadDirectory();
+const base = `https://${site.domain}`;
+const org = site.organization || {};
+const sortLabel = site.sortAttribute ? (attributes.find((a) => a.key === site.sortAttribute) || {}).label : '';
+const title = `How we score | ${site.brand}`;
+const description = `How ${site.brand} orders funeral directors, where the information comes from, and why no business can pay for a position or an award.`;
+const schema = [{ '@context': 'https://schema.org', '@type': 'WebPage', '@id': base + '/methodology/', url: base + '/methodology/', name: 'How we score', dateModified: buildDate }];
+---
+<Base title={title} description={description} path="/methodology/" schema={schema}>
+  <Fragment slot="head">
+    <h1>How we score</h1>
+  </Fragment>
+  <section class="prose">
+    <h2>The order on every town page</h2>
+    {sortLabel && <p>Funeral directors we have confirmed for <b>{sortLabel.toLowerCase()}</b> are listed first. Within each group the order is the same.</p>}
+    <p>Each funeral director gets a score: its Google rating multiplied by the base-10 logarithm of its review count plus one. A 4.9 from 300 reviews scores above a 5.0 from 3, because a rating backed by more families tells you more. Equal scores are ordered by name.</p>
+    <p>Nothing else changes the order. Not payment (nothing on this site is for sale), not whether a business has claimed its listing, and not whether it is a client of {org.name || 'our publisher'}.</p>
+    <h2>Where the information comes from</h2>
+    <p>Business names, addresses, phone numbers, ratings and review counts come from Google Maps data. Everything in a listing's details, such as ownership, services and price publication, comes from the funeral director's own website. A detail is marked yes only when the business's own words say so; if we could not find it, the listing says "not enough info" rather than guess.</p>
+    <p>Details can go out of date. Check anything that matters with the funeral director before you decide, and <a href="/contact/">tell us</a> if something is wrong.</p>
+    <h2>The awards</h2>
+    <p>Entering the awards is free and open to every funeral director we list, whether or not they have claimed their listing. Shortlists come from published criteria and family nominations, and winners are chosen by independent judges who are not told which firms are clients of our publisher. Buying anything from {org.name || 'our publisher'} has no effect on eligibility, scoring or results.</p>
+    <h2>Who runs this site</h2>
+    <p>{site.disclosure || `${site.brand} is published by ${org.name || site.publisher.name}.`} <a href="/about/">More about us</a>.</p>
+  </section>
+</Base>

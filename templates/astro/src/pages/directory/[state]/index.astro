@@ -30,10 +30,9 @@ const faqs = [
   <Fragment slot="head">
     <Breadcrumbs site={site} items={[{ name: 'Home', href: '/' }, { name: site.niche.title, href: '/directory/' }, { name: site.state.name, href: statePath }]} />
     <h1>{site.niche.title} in {site.state.name}, by city</h1>
-    <p class="lede">{listings.length.toLocaleString('en-US')} {site.niche.plural} in {cities.length} cities. Every city page ranks the businesses in it by rating and review count, with featured placements marked.</p>
+    <p class="lede">{listings.length.toLocaleString('en-GB')} {site.niche.plural} in {cities.length} cities. Every town page orders the businesses in it by our published score, and no business can pay to change its position. <a href="/methodology/">How we score</a>.</p>
   </Fragment>
   {stateIntro && <div class="prose" set:html={paragraphs(stateIntro)}></div>}
-  <FeaturedBand site={site} items={homeFeatured} place={site.state.name} price={site.tiers?.city?.price} />
   <section>
     <h2>All cities</h2>
     <ul class="city-grid">{alpha.map((c) => <li><a href={c.path}>{c.name}</a> <span class="n">{c.count}</span></li>)}</ul>
